@@ -10,11 +10,11 @@ class VideoInput(BaseModel):
 @app.post("/calculate")
 def calculate_costs(data: VideoInput):
     # Calculate LLM cost
-    llm_cost = data.video_length * ((1700 * data.video_length * 2 * 2.5)/1000000 + (75 * 2 * data.video_length * 10)/1000000)
+    llm_cost = data.video_length * 52.2
     llm_yearly = llm_cost * 12
     
     # Calculate other costs
-    vector_db = data.video_length * 0.23 * 2175
+    vector_db = data.video_length * 0.23 + 2175
     vector_yearly = vector_db * 12
     
     storage = ceil(data.video_length * 75 / 1024) * 87 * 0.025
